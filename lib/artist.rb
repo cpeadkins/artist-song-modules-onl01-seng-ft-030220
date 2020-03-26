@@ -1,26 +1,34 @@
+require 'pry'
 
-require "pry"
+class Artist
 
-module Memorable
+  extend Memorable::ClassMethods
+  include Memorable::InstanceMethods
+  extend Findable::ClassMethods
+  include Paramable::InstanceMethods
+  
+  attr_accessor :name
+  attr_reader :songs
 
-    module ClassMethods
+  @@artists = []
 
-        def reset_all
-            all.clear
-        end
+  def initialize
+    super
+    @songs = []
+  end
 
-        def count
-            all.count
-        end
-    end
+  def self.all
+    @@artists
+  end
 
-    module InstanceMethods
+  def add_song(song)
+    @songs << song
+    song.artist = self
+  end
 
-        def initialize
-            self.class.all << self
-        end
-
-    end
+  def add_songs(songs)
+    songs.each { |song| add_song(song) }
+  end
 
 end
 
