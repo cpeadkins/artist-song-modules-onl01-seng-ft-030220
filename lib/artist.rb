@@ -1,42 +1,45 @@
-require 'pry'
 
-class Artist
-  attr_accessor :name
-  attr_reader :songs
 
-  @@artists = []
 
-  def initialize
-    @@artists << self
-    @songs = []
-  end
+# require 'pry'
 
-  def self.find_by_name(name)
-    @@artists.detect{|a| a.name == name}
-  end
+# class Artist
+#   attr_accessor :name
+#   attr_reader :songs
 
-  def self.all
-    @@artists
-  end
+#   @@artists = []
 
-  # def self.reset_all
-  #   self.all.clear
-  # end
+#   def initialize
+#     @@artists << self
+#     @songs = []
+#   end
 
-  # def self.count
-  #   self.all.count
-  # end
+#   def self.find_by_name(name)
+#     @@artists.detect{|a| a.name == name}
+#   end
 
-  def add_song(song)
-    @songs << song
-    song.artist = self
-  end
+#   def self.all
+#     @@artists
+#   end
 
-  def add_songs(songs)
-    songs.each { |song| add_song(song) }
-  end
+#   def self.reset_all
+#     self.all.clear
+#   end
 
-  def to_param
-    name.downcase.gsub(' ', '-')
-  end
-end
+#   def self.count
+#     self.all.count
+#   end
+
+#   def add_song(song)
+#     @songs << song
+#     song.artist = self
+#   end
+
+#   def add_songs(songs)
+#     songs.each { |song| add_song(song) }
+#   end
+
+#   def to_param
+#     name.downcase.gsub(' ', '-')
+#   end
+# end
